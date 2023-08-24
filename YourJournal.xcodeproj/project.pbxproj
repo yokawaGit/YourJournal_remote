@@ -18,6 +18,8 @@
 		92ECBBC82A8257E200A9907F /* JournalTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ECBBC72A8257E200A9907F /* JournalTableView.swift */; };
 		92ECBBCA2A8257FA00A9907F /* JournalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ECBBC92A8257FA00A9907F /* JournalCell.swift */; };
 		92ECBBCC2A825DEC00A9907F /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ECBBCB2A825DEC00A9907F /* Journal.swift */; };
+		92F5964B2A9748B300F36BEF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92F5964A2A9748B300F36BEF /* GoogleService-Info.plist */; };
+		92F5964E2A97494B00F36BEF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 92F5964D2A97494B00F36BEF /* FirebaseAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,7 @@
 		92ECBBC72A8257E200A9907F /* JournalTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalTableView.swift; sourceTree = "<group>"; };
 		92ECBBC92A8257FA00A9907F /* JournalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCell.swift; sourceTree = "<group>"; };
 		92ECBBCB2A825DEC00A9907F /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		92F5964A2A9748B300F36BEF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92F5964E2A97494B00F36BEF /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +81,7 @@
 				92ECBBBC2A824ED300A9907F /* Assets.xcassets */,
 				92ECBBBE2A824ED300A9907F /* LaunchScreen.storyboard */,
 				92ECBBC12A824ED300A9907F /* Info.plist */,
+				92F5964A2A9748B300F36BEF /* GoogleService-Info.plist */,
 				92ECBBB92A824ED100A9907F /* YourJournal.xcdatamodeld */,
 			);
 			path = YourJournal;
@@ -98,6 +103,9 @@
 			dependencies = (
 			);
 			name = YourJournal;
+			packageProductDependencies = (
+				92F5964D2A97494B00F36BEF /* FirebaseAuth */,
+			);
 			productName = YourJournal;
 			productReference = 92ECBBAD2A824ED100A9907F /* YourJournal.app */;
 			productType = "com.apple.product-type.application";
@@ -126,6 +134,9 @@
 				Base,
 			);
 			mainGroup = 92ECBBA42A824ED100A9907F;
+			packageReferences = (
+				92F5964C2A97494B00F36BEF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 92ECBBAE2A824ED100A9907F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -141,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92ECBBC02A824ED300A9907F /* LaunchScreen.storyboard in Resources */,
+				92F5964B2A9748B300F36BEF /* GoogleService-Info.plist in Resources */,
 				92ECBBBD2A824ED300A9907F /* Assets.xcassets in Resources */,
 				92ECBBB82A824ED100A9907F /* Main.storyboard in Resources */,
 			);
@@ -378,6 +390,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		92F5964C2A97494B00F36BEF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		92F5964D2A97494B00F36BEF /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92F5964C2A97494B00F36BEF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		92ECBBB92A824ED100A9907F /* YourJournal.xcdatamodeld */ = {
