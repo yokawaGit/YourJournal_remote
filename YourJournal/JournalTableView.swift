@@ -52,7 +52,7 @@ class JournalTableView: UITableViewController {
         let thisJournal: Journal!
         thisJournal = nonDeletedJournals()[indexPath.row]
         
-        journalCell.dateLabel.text = thisJournal.dateCreated
+        //journalCell.dateLabel.text = thisJournal.dateCreated
         journalCell.descLabel.text = thisJournal.desc
         
         return journalCell

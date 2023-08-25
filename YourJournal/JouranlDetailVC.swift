@@ -10,8 +10,9 @@ import CoreData
 import CoreML
 
 class JouranlDetailVC: UIViewController {
-
-    @IBOutlet weak var dateTF: UITextField!
+    
+    // 新しく追加
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var descTV: UITextView!
     @IBOutlet weak var resultLabel: UILabel!
     
@@ -22,20 +23,27 @@ class JouranlDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(selectedJournal != nil) {
-            
-            dateTF.text = selectedJournal?.dateCreated
-            descTV.text = selectedJournal?.desc 
+        
+        // UIDatePickerのモードを日付のみに設定
+        datePicker.datePickerMode = .date
+        
+        // UIDatePickerの最大日付を今日に設定
+        datePicker.maximumDate = Date()
+        
+        
+        if let journal = selectedJournal {
+            datePicker.date = journal.dayCreated ?? Date()
+            descTV.text = journal.desc
         }
     }
-
+    
     @IBAction func analyzeButtonPressed(_ sender: Any) {
         
         guard let inputText = descTV.text else { return }
         
         // テキストをモデルに入力して予測を取得
         let input = EmotionDetectionModelInput(text: inputText)
-
+        
         
         guard let output = try? model.prediction(input: input) else {
             resultLabel.text = "Analysis failed."
@@ -51,13 +59,14 @@ class JouranlDetailVC: UIViewController {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        if(selectedJournal == nil) {
-            
+        
+        if selectedJournal == nil {
             let entity = NSEntityDescription.entity(forEntityName: "Journal", in: context)
             let newJournal = Journal(entity: entity!, insertInto: context)
             newJournal.id = journalList.count as NSNumber
-            newJournal.dateCreated = dateTF.text
+            newJournal.dayCreated = datePicker.date // UIDatePickerから日付を取得して保存
             newJournal.desc = descTV.text
+            
             do {
                 try context.save()
                 journalList.append(newJournal)
@@ -66,14 +75,13 @@ class JouranlDetailVC: UIViewController {
                 print("save error.")
             }
         } else {
-            
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Journal")
             do {
                 let results: NSArray = try context.fetch(request) as NSArray
                 for result in results {
                     let journal = result as! Journal
-                    if(journal == selectedJournal) {
-                        journal.dateCreated = dateTF.text
+                    if journal == selectedJournal {
+                        journal.dayCreated = datePicker.date
                         journal.desc = descTV.text
                         try context.save()
                         navigationController?.popViewController(animated: true)
@@ -82,7 +90,6 @@ class JouranlDetailVC: UIViewController {
             } catch {
                 print("Fetch failed.")
             }
-            
         }
     }
     
