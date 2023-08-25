@@ -23,6 +23,14 @@ class JournalTableView: UITableViewController {
             }
         }
         
+        // dayCreatedに基づいてソート
+            noDeleteJournalList.sort { (journal1, journal2) -> Bool in
+                guard let date1 = journal1.dayCreated, let date2 = journal2.dayCreated else {
+                    return false
+                }
+                return date1 > date2 // 新しいものから古いものへの降順でソート
+            }
+        
         return noDeleteJournalList
     }
     
