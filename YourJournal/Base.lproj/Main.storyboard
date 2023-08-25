@@ -60,6 +60,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="日記リスト" id="IcQ-74-awb">
+                        <barButtonItem key="leftBarButtonItem" title="ログアウト" id="ja6-g5-s5b">
+                            <connections>
+                                <action selector="logOutPressed:" destination="9oU-0T-LJy" id="3AT-Gc-Be1"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="H0M-7h-GHK">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="GuD-oM-OYb">
                                 <rect key="frame" x="287" y="5" width="87" height="34.333333333333336"/>

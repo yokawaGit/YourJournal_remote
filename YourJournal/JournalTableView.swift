@@ -83,6 +83,7 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
         searchBar.delegate = self
         
         if(firstLoad){
+            journalList.removeAll()
             firstLoad = false
             // same firsr 2 lines from save func
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -161,4 +162,10 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
         }
     }
     
+    @IBAction func logOutPressed(_ sender: Any) {
+        
+        navigationController?.popToRootViewController(animated: true)
+        
+    }
+
 }
