@@ -15,5 +15,6 @@ class Journal: NSManagedObject {
     @NSManaged var dateCreated: Date?
     @NSManaged var dateDeleted: Date?
     @NSManaged var dayCreated: Date?
+    @NSManaged var emotionResult: String!
     
 }
