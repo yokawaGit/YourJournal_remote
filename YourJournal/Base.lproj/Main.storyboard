@@ -16,9 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="7p8-wL-HIJ">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="9oU-0T-LJy" id="4ho-8c-uPf"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="journalCellID" id="ZpV-BH-Rpm" customClass="JournalCell" customModule="YourJournal" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="390" height="90"/>
+                                <rect key="frame" x="0.0" y="94" width="390" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZpV-BH-Rpm" id="amv-KK-BJ4" customClass="JournalCell" customModule="YourJournal" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="359.66666666666669" height="90"/>
@@ -65,6 +73,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="7p8-wL-HIJ" id="2WM-aI-OaQ"/>
                         <segue destination="84M-9Z-REI" kind="show" identifier="editJournal" id="Vzg-FR-4ra"/>
                     </connections>
                 </tableViewController>
