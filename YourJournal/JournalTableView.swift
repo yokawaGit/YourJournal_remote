@@ -77,6 +77,8 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        navigationItem.hidesBackButton = true
 
         searchBar.delegate = self
         
