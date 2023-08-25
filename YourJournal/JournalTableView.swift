@@ -52,8 +52,16 @@ class JournalTableView: UITableViewController {
         let thisJournal: Journal!
         thisJournal = nonDeletedJournals()[indexPath.row]
         
-        //journalCell.dateLabel.text = thisJournal.dateCreated
         journalCell.descLabel.text = thisJournal.desc
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        if let date = thisJournal.dayCreated {
+            journalCell.dateLabel.text = formatter.string(from: date)
+        } else {
+            journalCell.dateLabel.text = "Unknown Date"
+        }
+
         
         return journalCell
     }
