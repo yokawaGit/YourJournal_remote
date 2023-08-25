@@ -11,4 +11,6 @@ class JournalCell: UITableViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var emotionLabel: UILabel!
+    
 }
