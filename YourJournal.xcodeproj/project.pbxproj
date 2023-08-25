@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9245C3BA2A98D1F9009CE2E8 /* WelcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9245C3B92A98D1F9009CE2E8 /* WelcomViewController.swift */; };
 		92BEFFEC2A92919400B6A359 /* EmotionDetectionModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 92BEFFEB2A92919400B6A359 /* EmotionDetectionModel.mlmodel */; };
 		92ECBBB12A824ED100A9907F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ECBBB02A824ED100A9907F /* AppDelegate.swift */; };
 		92ECBBB32A824ED100A9907F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ECBBB22A824ED100A9907F /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9245C3B92A98D1F9009CE2E8 /* WelcomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomViewController.swift; sourceTree = "<group>"; };
 		92BEFFEB2A92919400B6A359 /* EmotionDetectionModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionDetectionModel.mlmodel; sourceTree = "<group>"; };
 		92ECBBAD2A824ED100A9907F /* YourJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92ECBBB02A824ED100A9907F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				92ECBBB02A824ED100A9907F /* AppDelegate.swift */,
 				92ECBBB22A824ED100A9907F /* SceneDelegate.swift */,
 				92ECBBB42A824ED100A9907F /* JouranlDetailVC.swift */,
+				9245C3B92A98D1F9009CE2E8 /* WelcomViewController.swift */,
 				92ECBBCB2A825DEC00A9907F /* Journal.swift */,
 				92ECBBB62A824ED100A9907F /* Main.storyboard */,
 				92ECBBC72A8257E200A9907F /* JournalTableView.swift */,
@@ -173,6 +176,7 @@
 				92ECBBB32A824ED100A9907F /* SceneDelegate.swift in Sources */,
 				92ECBBCC2A825DEC00A9907F /* Journal.swift in Sources */,
 				92ECBBCA2A8257FA00A9907F /* JournalCell.swift in Sources */,
+				9245C3BA2A98D1F9009CE2E8 /* WelcomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +326,7 @@
 				DEVELOPMENT_TEAM = MNR8QWUD96;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YourJournal/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "本人認証のために必要です。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -350,6 +355,7 @@
 				DEVELOPMENT_TEAM = MNR8QWUD96;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YourJournal/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "本人認証のために必要です。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
