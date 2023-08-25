@@ -34,6 +34,12 @@ class JouranlDetailVC: UIViewController {
         if let journal = selectedJournal {
             datePicker.date = journal.dayCreated ?? Date()
             descTV.text = journal.desc
+            
+            if let emotion = journal.emotionResult {
+                let emoji = emotionToEmoji(emotion: emotion)
+                resultLabel.text = "\(emotion) \(emoji)"
+            }
+            
         }
     }
     
@@ -51,9 +57,37 @@ class JouranlDetailVC: UIViewController {
         }
         
         // 予測結果をラベルに表示
-        resultLabel.text = "\(output.label)"
+        let emotion = "\(output.label)"
+        selectedJournal?.emotionResult = emotion // 結果を保存
+        let emoji = emotionToEmoji(emotion: emotion)
+        resultLabel.text = "\(emotion) \(emoji)" // ラベルと顔文字を一緒に表示
         
     }
+    
+    
+    func emotionToEmoji(emotion: String) -> String {
+        switch emotion {
+        case "期待":
+            return "😊" // 期待に対する顔文字
+        case "恐れ":
+            return "😨"
+        case "喜び":
+            return "😄"
+        case "嫌悪":
+            return "😠"
+        case "信頼":
+            return "🤝"
+        case "悲しみ":
+            return "😢"
+        case "驚き":
+            return "😲"
+        case "怒り":
+            return "😡"
+        default:
+            return "❓"
+        }
+    }
+
     
     @IBAction func saveAction(_ sender: Any) {
         

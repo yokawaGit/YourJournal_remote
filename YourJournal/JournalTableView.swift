@@ -132,6 +132,13 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
             journalCell.dateLabel.text = "Unknown Date"
         }
 
+        // emotionResultを顔文字に変換してセルに表示
+        if let emotion = thisJournal.emotionResult {
+            let emoji = emotionToEmoji(emotion: emotion)
+            journalCell.emotionLabel.text = emoji // ここでは、JournalCellにemotionLabelという名前のUILabelを追加したと仮定しています
+        } else {
+            journalCell.emotionLabel.text = "" // emotionResultがない場合、ラベルをクリア
+        }
         
         return journalCell
     }
@@ -168,4 +175,26 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
         
     }
 
+    func emotionToEmoji(emotion: String) -> String {
+        switch emotion {
+        case "期待":
+            return "😊" // 期待に対する顔文字
+        case "恐れ":
+            return "😨"
+        case "喜び":
+            return "😄"
+        case "嫌悪":
+            return "😠"
+        case "信頼":
+            return "🤝"
+        case "悲しみ":
+            return "😢"
+        case "驚き":
+            return "😲"
+        case "怒り":
+            return "😡"
+        default:
+            return "❓"
+        }
+    }
 }
