@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85C3DE55B8B1B8316E70EC2F /* Pods_YourJournal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2113091A0D48AA5A6ED06149 /* Pods_YourJournal.framework */; };
+		921142272A9A14EE0000B61E /* EmotionSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921142262A9A14EE0000B61E /* EmotionSummaryViewController.swift */; };
 		9245C3BA2A98D1F9009CE2E8 /* WelcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9245C3B92A98D1F9009CE2E8 /* WelcomViewController.swift */; };
 		92BEFFEC2A92919400B6A359 /* EmotionDetectionModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 92BEFFEB2A92919400B6A359 /* EmotionDetectionModel.mlmodel */; };
 		92ECBBB12A824ED100A9907F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ECBBB02A824ED100A9907F /* AppDelegate.swift */; };
@@ -24,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2113091A0D48AA5A6ED06149 /* Pods_YourJournal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourJournal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80262A3B5B567E44BEC36ED8 /* Pods-YourJournal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourJournal.debug.xcconfig"; path = "Target Support Files/Pods-YourJournal/Pods-YourJournal.debug.xcconfig"; sourceTree = "<group>"; };
+		921142262A9A14EE0000B61E /* EmotionSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionSummaryViewController.swift; sourceTree = "<group>"; };
 		9245C3B92A98D1F9009CE2E8 /* WelcomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomViewController.swift; sourceTree = "<group>"; };
 		92BEFFEB2A92919400B6A359 /* EmotionDetectionModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionDetectionModel.mlmodel; sourceTree = "<group>"; };
 		92ECBBAD2A824ED100A9907F /* YourJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +44,7 @@
 		92ECBBC92A8257FA00A9907F /* JournalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCell.swift; sourceTree = "<group>"; };
 		92ECBBCB2A825DEC00A9907F /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		92F5964A2A9748B300F36BEF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A8F77E112FEA7FD1437F0662 /* Pods-YourJournal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourJournal.release.xcconfig"; path = "Target Support Files/Pods-YourJournal/Pods-YourJournal.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,17 +53,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				92F5964E2A97494B00F36BEF /* FirebaseAuth in Frameworks */,
+				85C3DE55B8B1B8316E70EC2F /* Pods_YourJournal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		359CC5FC9C5CAB4371AF0930 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2113091A0D48AA5A6ED06149 /* Pods_YourJournal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		397FFDC3847D3626C71C920A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				80262A3B5B567E44BEC36ED8 /* Pods-YourJournal.debug.xcconfig */,
+				A8F77E112FEA7FD1437F0662 /* Pods-YourJournal.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		92ECBBA42A824ED100A9907F = {
 			isa = PBXGroup;
 			children = (
 				92ECBBAF2A824ED100A9907F /* YourJournal */,
 				92ECBBAE2A824ED100A9907F /* Products */,
+				397FFDC3847D3626C71C920A /* Pods */,
+				359CC5FC9C5CAB4371AF0930 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +106,7 @@
 				9245C3B92A98D1F9009CE2E8 /* WelcomViewController.swift */,
 				92ECBBCB2A825DEC00A9907F /* Journal.swift */,
 				92ECBBB62A824ED100A9907F /* Main.storyboard */,
+				921142262A9A14EE0000B61E /* EmotionSummaryViewController.swift */,
 				92ECBBC72A8257E200A9907F /* JournalTableView.swift */,
 				92ECBBC92A8257FA00A9907F /* JournalCell.swift */,
 				92ECBBBC2A824ED300A9907F /* Assets.xcassets */,
@@ -97,9 +125,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92ECBBC42A824ED300A9907F /* Build configuration list for PBXNativeTarget "YourJournal" */;
 			buildPhases = (
+				47A4F3B2E980312CA0741ED2 /* [CP] Check Pods Manifest.lock */,
 				92ECBBA92A824ED100A9907F /* Sources */,
 				92ECBBAA2A824ED100A9907F /* Frameworks */,
 				92ECBBAB2A824ED100A9907F /* Resources */,
+				A27581669FF1C70328AA0DF9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -163,6 +193,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		47A4F3B2E980312CA0741ED2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YourJournal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A27581669FF1C70328AA0DF9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YourJournal/Pods-YourJournal-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YourJournal/Pods-YourJournal-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YourJournal/Pods-YourJournal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		92ECBBA92A824ED100A9907F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -175,6 +247,7 @@
 				92ECBBBB2A824ED100A9907F /* YourJournal.xcdatamodeld in Sources */,
 				92ECBBB32A824ED100A9907F /* SceneDelegate.swift in Sources */,
 				92ECBBCC2A825DEC00A9907F /* Journal.swift in Sources */,
+				921142272A9A14EE0000B61E /* EmotionSummaryViewController.swift in Sources */,
 				92ECBBCA2A8257FA00A9907F /* JournalCell.swift in Sources */,
 				9245C3BA2A98D1F9009CE2E8 /* WelcomViewController.swift in Sources */,
 			);
@@ -318,6 +391,7 @@
 		};
 		92ECBBC52A824ED300A9907F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80262A3B5B567E44BEC36ED8 /* Pods-YourJournal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -347,6 +421,7 @@
 		};
 		92ECBBC62A824ED300A9907F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8F77E112FEA7FD1437F0662 /* Pods-YourJournal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

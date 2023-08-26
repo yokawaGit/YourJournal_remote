@@ -175,6 +175,12 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
         
     }
 
+    @IBAction func analysisPressed(_ sender: UIBarButtonItem) {
+        
+        performSegue(withIdentifier: "ToAnalysis", sender: self)
+        
+    }
+    
     func emotionToEmoji(emotion: String) -> String {
         switch emotion {
         case "期待":

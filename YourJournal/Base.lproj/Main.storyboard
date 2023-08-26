@@ -73,17 +73,33 @@
                                 <action selector="logOutPressed:" destination="9oU-0T-LJy" id="3AT-Gc-Be1"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="H0M-7h-GHK">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="GuD-oM-OYb">
-                                <rect key="frame" x="287" y="5" width="87" height="34.333333333333336"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="plus.app" catalog="system"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" style="plain" id="H0M-7h-GHK">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="GuD-oM-OYb">
+                                    <rect key="frame" x="287" y="5" width="87" height="34.333333333333336"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="plus.app" catalog="system"/>
+                                    <connections>
+                                        <segue destination="84M-9Z-REI" kind="show" identifier="newJournal" id="hns-Xn-zsd"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem title="item" style="plain" id="lBb-jn-9OI">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="AQi-iu-dV8">
+                                    <rect key="frame" x="193" y="4.6666666666666679" width="86" height="35"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="chart.bar" catalog="system"/>
+                                    <connections>
+                                        <segue destination="D1O-9W-v8e" kind="show" id="o0K-ud-hcS"/>
+                                    </connections>
+                                </button>
                                 <connections>
-                                    <segue destination="84M-9Z-REI" kind="show" identifier="newJournal" id="hns-Xn-zsd"/>
+                                    <action selector="analysisPressed:" destination="9oU-0T-LJy" id="yMa-Jd-MdT"/>
                                 </connections>
-                            </button>
-                        </barButtonItem>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="7p8-wL-HIJ" id="2WM-aI-OaQ"/>
@@ -94,7 +110,49 @@
             </objects>
             <point key="canvasLocation" x="-543.07692307692309" y="253.79146919431278"/>
         </scene>
-        <!--Journal Detail-->
+        <!--感情の分析-->
+        <scene sceneID="gKH-Fu-W0n">
+            <objects>
+                <viewController id="D1O-9W-v8e" customClass="EmotionSummaryViewController" customModule="YourJournal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1gL-22-NWs">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBx-f0-3z7">
+                                <rect key="frame" x="16" y="267" width="179" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGa-ui-OjG" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="433" width="358" height="317"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This Week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyI-UK-oIy">
+                                <rect key="frame" x="16" y="178" width="179" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1VK-BQ-Fap"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="感情の分析" id="MVS-0G-bHM"/>
+                    <connections>
+                        <outlet property="emotionChartView" destination="rGa-ui-OjG" id="vLW-vU-xWq"/>
+                        <outlet property="lastWeekEmojiLabel" destination="GBx-f0-3z7" id="lzy-fs-ada"/>
+                        <outlet property="thisWeekEmojiLabel" destination="zyI-UK-oIy" id="qCH-tR-u32"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DdC-QV-URZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="217" y="-475"/>
+        </scene>
+        <!--日記の詳細-->
         <scene sceneID="Yd2-4e-JdY">
             <objects>
                 <viewController id="84M-9Z-REI" customClass="JouranlDetailVC" customModule="YourJournal" customModuleProvider="target" sceneMemberID="viewController">
@@ -159,7 +217,7 @@
                         <viewLayoutGuide key="safeArea" id="L3j-wr-d4j"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Journal Detail" id="fni-2P-L8j">
+                    <navigationItem key="navigationItem" title="日記の詳細" id="fni-2P-L8j">
                         <rightBarButtonItems>
                             <barButtonItem style="plain" id="HZU-Lq-Kgp">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="k83-lg-ALu">
@@ -193,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cxc-fq-HnZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="239.57345971563979"/>
+            <point key="canvasLocation" x="217" y="254"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CV0-RC-nZ5">
@@ -209,7 +267,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfb-yI-Ajr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2129" y="240"/>
+            <point key="canvasLocation" x="-2106" y="254"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="yVW-nx-1CZ">
@@ -255,13 +313,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EK1-2u-vGg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1369.2307692307693" y="239.57345971563979"/>
+            <point key="canvasLocation" x="-1334" y="254"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Vzg-FR-4ra"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="chart.bar" catalog="system" width="128" height="89"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <image name="trash" catalog="system" width="117" height="128"/>
