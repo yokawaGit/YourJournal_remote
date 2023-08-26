@@ -47,21 +47,37 @@ class EmotionSummaryViewController: UIViewController {
         let dates = monthDates()
         let emotions = fetchEmotionCounts(from: dates.from, to: dates.to)
         var dataEntries: [BarChartDataEntry] = []
+        var emotionNames: [String] = []
         
         for (index, emotion) in emotions.enumerated() {
             let emotionName = emotion.key
             let emotionCount = emotion.value
-            let dataEntry = BarChartDataEntry(x: Double(index), y: Double(emotionCount) / 30.0)
+            let dataEntry = BarChartDataEntry(x: Double(index), y: (Double(emotionCount) / 30.0)*100) // 値を100倍
             dataEntries.append(dataEntry)
+            emotionNames.append(emotionName)
         }
         
         let dataSet = BarChartDataSet(entries: dataEntries, label: "Emotions")
         let data = BarChartData(dataSet: dataSet)
         emotionChartView.data = data
+
+        // X軸のラベルとして感情のクラスの名前を設定します
+        emotionChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: emotionNames)
+        emotionChartView.xAxis.granularity = 1
+        emotionChartView.xAxis.labelPosition = .bottomInside
+        
+        // Y軸のラベルを表示
+        emotionChartView.leftAxis.axisMaximum = 100.0
+        emotionChartView.rightAxis.enabled = false
+        
+        // グリッドラインを非表示にする
+        emotionChartView.xAxis.drawGridLinesEnabled = false
+        emotionChartView.leftAxis.drawGridLinesEnabled = false
+        
+        emotionChartView.notifyDataSetChanged()
     }
-    
-    
-    
+
+
     // 以下はサポート関数やデータのフェッチ、絵文字のマッピングなど...
     
     func weekDates() -> (thisWeek: (from: Date, to: Date), lastWeek: (from: Date, to: Date)) {
