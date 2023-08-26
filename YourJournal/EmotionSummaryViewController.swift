@@ -13,6 +13,9 @@ class EmotionSummaryViewController: UIViewController {
     
     @IBOutlet weak var thisWeekEmojiLabel: UILabel!
     @IBOutlet weak var lastWeekEmojiLabel: UILabel!
+    @IBOutlet weak var thisWeekEmotionLabel: UILabel!
+    @IBOutlet weak var lastWeekEmotionLabel: UILabel!
+    
     @IBOutlet weak var emotionChartView: BarChartView!
     
     
@@ -25,15 +28,19 @@ class EmotionSummaryViewController: UIViewController {
     
     func displayTopEmotions() {
         let dates = weekDates()
-            
-            let thisWeekEmotions = fetchEmotionCounts(from: dates.thisWeek.from, to: dates.thisWeek.to)
-            let lastWeekEmotions = fetchEmotionCounts(from: dates.lastWeek.from, to: dates.lastWeek.to)
-            
-            let thisWeekTopEmotion = topEmotion(from: thisWeekEmotions)
-            let lastWeekTopEmotion = topEmotion(from: lastWeekEmotions)
-            
+        
+        let thisWeekEmotions = fetchEmotionCounts(from: dates.thisWeek.from, to: dates.thisWeek.to)
+        let lastWeekEmotions = fetchEmotionCounts(from: dates.lastWeek.from, to: dates.lastWeek.to)
+        
+        let thisWeekTopEmotion = topEmotion(from: thisWeekEmotions)
+        let lastWeekTopEmotion = topEmotion(from: lastWeekEmotions)
+        
         thisWeekEmojiLabel.text = emoji(emotion: thisWeekTopEmotion)
         lastWeekEmojiLabel.text = emoji(emotion: lastWeekTopEmotion)
+        
+        // クラスのラベルを表示するためのコード
+        thisWeekEmotionLabel.text = thisWeekTopEmotion
+        lastWeekEmotionLabel.text = lastWeekTopEmotion
     }
     
     func setupBarChart() {
