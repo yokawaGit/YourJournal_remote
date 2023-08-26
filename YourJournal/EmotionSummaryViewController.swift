@@ -57,7 +57,7 @@ class EmotionSummaryViewController: UIViewController {
             emotionNames.append(emotionName)
         }
         
-        let dataSet = BarChartDataSet(entries: dataEntries, label: "Emotions")
+        let dataSet = BarChartDataSet(entries: dataEntries, label: "日記からわかる最近１週間のそれぞれの感情の割合（％）")
         let data = BarChartData(dataSet: dataSet)
         emotionChartView.data = data
 
