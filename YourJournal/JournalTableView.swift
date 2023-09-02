@@ -183,21 +183,17 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
     
     func emotionToEmoji(emotion: String) -> String {
         switch emotion {
-        case "期待":
-            return "😊" // 期待に対する顔文字
-        case "恐れ":
+        case "Love":
+            return "🥰"
+        case "Fear":
             return "😨"
-        case "喜び":
+        case "Joy":
             return "😄"
-        case "嫌悪":
-            return "😠"
-        case "信頼":
-            return "🤝"
-        case "悲しみ":
+        case "Sadness":
             return "😢"
-        case "驚き":
+        case "Surprise":
             return "😲"
-        case "怒り":
+        case "Anger":
             return "😡"
         default:
             return "❓"

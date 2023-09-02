@@ -19,7 +19,7 @@ class JouranlDetailVC: UIViewController {
     var selectedJournal: Journal? = nil
     
     // Create MLモデルのインスタンスを作成
-    let model = try! EmotionDetectionModel(configuration: MLModelConfiguration())
+    let model = try! EnglishEmotionDetectionModel(configuration: MLModelConfiguration())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,7 @@ class JouranlDetailVC: UIViewController {
         guard let inputText = descTV.text else { return }
         
         // テキストをモデルに入力して予測を取得
-        let input = EmotionDetectionModelInput(text: inputText)
+        let input = EnglishEmotionDetectionModelInput(text: inputText)
         
         
         guard let output = try? model.prediction(input: input) else {
@@ -67,21 +67,17 @@ class JouranlDetailVC: UIViewController {
     
     func emotionToEmoji(emotion: String) -> String {
         switch emotion {
-        case "期待":
-            return "😊" // 期待に対する顔文字
-        case "恐れ":
+        case "Love":
+            return "🥰"
+        case "Fear":
             return "😨"
-        case "喜び":
+        case "Joy":
             return "😄"
-        case "嫌悪":
-            return "😠"
-        case "信頼":
-            return "🤝"
-        case "悲しみ":
+        case "Sadness":
             return "😢"
-        case "驚き":
+        case "Surprise":
             return "😲"
-        case "怒り":
+        case "Anger":
             return "😡"
         default:
             return "❓"
