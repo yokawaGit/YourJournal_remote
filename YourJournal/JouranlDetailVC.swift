@@ -19,7 +19,7 @@ class JouranlDetailVC: UIViewController {
     var selectedJournal: Journal? = nil
     
     // Create MLモデルのインスタンスを作成
-    let model = try! EmotionDetectionModel(configuration: MLModelConfiguration())
+    let model = try! EnglishEmotionDetectionModel(configuration: MLModelConfiguration())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,43 +45,44 @@ class JouranlDetailVC: UIViewController {
     
     @IBAction func analyzeButtonPressed(_ sender: Any) {
         
-        guard let inputText = descTV.text else { return }
-        
-        // テキストをモデルに入力して予測を取得
-        let input = EmotionDetectionModelInput(text: inputText)
-        
-        
-        guard let output = try? model.prediction(input: input) else {
-            resultLabel.text = "Analysis failed."
-            return
-        }
-        
-        // 予測結果をラベルに表示
-        let emotion = "\(output.label)"
-        selectedJournal?.emotionResult = emotion // 結果を保存
-        let emoji = emotionToEmoji(emotion: emotion)
-        resultLabel.text = "\(emotion) \(emoji)" // ラベルと顔文字を一緒に表示
+        // ここでキーボードを引っ込める
+           descTV.resignFirstResponder()
+           
+           guard let inputText = descTV.text, !inputText.isEmpty else {
+               resultLabel.text = "❓"
+               return
+           }
+           
+           // テキストをモデルに入力して予測を取得
+           let input = EnglishEmotionDetectionModelInput(text: inputText)
+           
+           guard let output = try? model.prediction(input: input) else {
+               resultLabel.text = "Analysis failed."
+               return
+           }
+           
+           // 予測結果をラベルに表示
+           let emotion = "\(output.label)"
+           selectedJournal?.emotionResult = emotion // 結果を保存
+           let emoji = emotionToEmoji(emotion: emotion)
+           resultLabel.text = "\(emotion) \(emoji)" // ラベルと顔文字を一緒に表示
         
     }
     
     
     func emotionToEmoji(emotion: String) -> String {
         switch emotion {
-        case "期待":
-            return "😊" // 期待に対する顔文字
-        case "恐れ":
+        case "Love":
+            return "🥰"
+        case "Fear":
             return "😨"
-        case "喜び":
+        case "Joy":
             return "😄"
-        case "嫌悪":
-            return "😠"
-        case "信頼":
-            return "🤝"
-        case "悲しみ":
+        case "Sadness":
             return "😢"
-        case "驚き":
+        case "Surprise":
             return "😲"
-        case "怒り":
+        case "Anger":
             return "😡"
         default:
             return "❓"
@@ -127,7 +128,7 @@ class JouranlDetailVC: UIViewController {
         }
     }
     
-    @IBAction func deleteAction(_ sender: Any) {
+    @IBAction func deletePressed(_ sender: UIBarButtonItem) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext

@@ -40,7 +40,7 @@ class WelcomeViewController: UIViewController {
         var error: NSError?
 
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
-            let reason = "本人確認が必要です。"
+            let reason = "Identity verification is required."
 
             context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, authenticationError in
                 DispatchQueue.main.async {
@@ -49,7 +49,7 @@ class WelcomeViewController: UIViewController {
                         self.performSegue(withIdentifier: "ToJournal", sender: self)
                     } else {
                         // 認証失敗時のアクション
-                        self.descLabel.text = "本人認証に失敗しました。"
+                        self.descLabel.text = "Identity verification failed."
                     }
                 }
             }

@@ -57,7 +57,7 @@ class EmotionSummaryViewController: UIViewController {
             emotionNames.append(emotionName)
         }
         
-        let dataSet = BarChartDataSet(entries: dataEntries, label: "日記からわかる最近１週間のそれぞれの感情の割合（％）")
+        let dataSet = BarChartDataSet(entries: dataEntries, label: "The Proportions of Each Emotions Over the Past 30 Days")
         let data = BarChartData(dataSet: dataSet)
         emotionChartView.data = data
 
@@ -109,7 +109,7 @@ class EmotionSummaryViewController: UIViewController {
         let fetchRequest = NSFetchRequest<Journal>(entityName: "Journal")
         fetchRequest.predicate = NSPredicate(format: "(dayCreated >= %@) AND (dayCreated <= %@)", startDate as NSDate, endDate as NSDate)
         
-        var emotionCounts: [String: Int] = ["期待": 0, "恐れ": 0, "喜び": 0, "嫌悪": 0, "信頼": 0, "悲しみ": 0, "驚き": 0, "怒り": 0]
+        var emotionCounts: [String: Int] = ["Sadness": 0, "Fear": 0, "Joy": 0, "Surprise": 0, "Anger": 0, "Love": 0]
         
         do {
             let results = try context.fetch(fetchRequest)
@@ -131,21 +131,17 @@ class EmotionSummaryViewController: UIViewController {
     
     func emoji(emotion: String) -> String {
         switch emotion {
-        case "期待":
-            return "😊" // 期待に対する顔文字
-        case "恐れ":
+        case "Love":
+            return "🥰"
+        case "Fear":
             return "😨"
-        case "喜び":
+        case "Joy":
             return "😄"
-        case "嫌悪":
-            return "😠"
-        case "信頼":
-            return "🤝"
-        case "悲しみ":
+        case "Sadness":
             return "😢"
-        case "驚き":
+        case "Surprise":
             return "😲"
-        case "怒り":
+        case "Anger":
             return "😡"
         default:
             return "❓"

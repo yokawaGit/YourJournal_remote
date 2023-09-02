@@ -10,7 +10,7 @@
 		85C3DE55B8B1B8316E70EC2F /* Pods_YourJournal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2113091A0D48AA5A6ED06149 /* Pods_YourJournal.framework */; };
 		921142272A9A14EE0000B61E /* EmotionSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921142262A9A14EE0000B61E /* EmotionSummaryViewController.swift */; };
 		9245C3BA2A98D1F9009CE2E8 /* WelcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9245C3B92A98D1F9009CE2E8 /* WelcomViewController.swift */; };
-		92BEFFEC2A92919400B6A359 /* EmotionDetectionModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 92BEFFEB2A92919400B6A359 /* EmotionDetectionModel.mlmodel */; };
+		9267F6D72AA375CD00E965EF /* EnglishEmotionDetectionModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9267F6D62AA375CD00E965EF /* EnglishEmotionDetectionModel.mlmodel */; };
 		92ECBBB12A824ED100A9907F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ECBBB02A824ED100A9907F /* AppDelegate.swift */; };
 		92ECBBB32A824ED100A9907F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ECBBB22A824ED100A9907F /* SceneDelegate.swift */; };
 		92ECBBB52A824ED100A9907F /* JouranlDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ECBBB42A824ED100A9907F /* JouranlDetailVC.swift */; };
@@ -30,7 +30,7 @@
 		80262A3B5B567E44BEC36ED8 /* Pods-YourJournal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourJournal.debug.xcconfig"; path = "Target Support Files/Pods-YourJournal/Pods-YourJournal.debug.xcconfig"; sourceTree = "<group>"; };
 		921142262A9A14EE0000B61E /* EmotionSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionSummaryViewController.swift; sourceTree = "<group>"; };
 		9245C3B92A98D1F9009CE2E8 /* WelcomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomViewController.swift; sourceTree = "<group>"; };
-		92BEFFEB2A92919400B6A359 /* EmotionDetectionModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionDetectionModel.mlmodel; sourceTree = "<group>"; };
+		9267F6D62AA375CD00E965EF /* EnglishEmotionDetectionModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EnglishEmotionDetectionModel.mlmodel; sourceTree = "<group>"; };
 		92ECBBAD2A824ED100A9907F /* YourJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92ECBBB02A824ED100A9907F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92ECBBB22A824ED100A9907F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +74,6 @@
 				80262A3B5B567E44BEC36ED8 /* Pods-YourJournal.debug.xcconfig */,
 				A8F77E112FEA7FD1437F0662 /* Pods-YourJournal.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -99,7 +98,7 @@
 		92ECBBAF2A824ED100A9907F /* YourJournal */ = {
 			isa = PBXGroup;
 			children = (
-				92BEFFEB2A92919400B6A359 /* EmotionDetectionModel.mlmodel */,
+				9267F6D62AA375CD00E965EF /* EnglishEmotionDetectionModel.mlmodel */,
 				92ECBBB02A824ED100A9907F /* AppDelegate.swift */,
 				92ECBBB22A824ED100A9907F /* SceneDelegate.swift */,
 				92ECBBB42A824ED100A9907F /* JouranlDetailVC.swift */,
@@ -240,8 +239,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92BEFFEC2A92919400B6A359 /* EmotionDetectionModel.mlmodel in Sources */,
 				92ECBBB52A824ED100A9907F /* JouranlDetailVC.swift in Sources */,
+				9267F6D72AA375CD00E965EF /* EnglishEmotionDetectionModel.mlmodel in Sources */,
 				92ECBBB12A824ED100A9907F /* AppDelegate.swift in Sources */,
 				92ECBBC82A8257E200A9907F /* JournalTableView.swift in Sources */,
 				92ECBBBB2A824ED100A9907F /* YourJournal.xcdatamodeld in Sources */,
@@ -404,8 +403,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -434,8 +433,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
