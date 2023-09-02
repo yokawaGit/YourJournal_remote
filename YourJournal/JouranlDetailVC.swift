@@ -123,7 +123,7 @@ class JouranlDetailVC: UIViewController {
         }
     }
     
-    @IBAction func deleteAction(_ sender: Any) {
+    @IBAction func deletePressed(_ sender: UIBarButtonItem) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
