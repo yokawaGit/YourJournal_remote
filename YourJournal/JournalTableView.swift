@@ -28,6 +28,8 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
     
     func nonDeletedJournals() -> [Journal] {
         
+        let startTime = CFAbsoluteTimeGetCurrent() // 開始時間の記録
+        
         var noDeleteJournalList = [Journal]()
         
         //        for journal in journalList {
@@ -71,12 +73,18 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
             return date1 > date2 // 新しいものから古いものへの降順でソート
         }
         
+        let endTime = CFAbsoluteTimeGetCurrent() // 終了時間の記録
+        let elapsedTime = endTime - startTime
+        print("Elapsed time for nonDeletedJournals: \(elapsedTime) seconds") // 処理時間の出力
+        
         return noDeleteJournalList
     }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        let startTime = CFAbsoluteTimeGetCurrent() // 開始時間の記録
         
         navigationItem.hidesBackButton = true
         
@@ -99,6 +107,10 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
                 print("fetch failed.")
             }
         }
+        
+        let endTime = CFAbsoluteTimeGetCurrent() // 終了時間の記録
+        let elapsedTime = endTime - startTime
+        print("Elapsed time for viewDidLoad: \(elapsedTime) seconds") // 処理時間の出力
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

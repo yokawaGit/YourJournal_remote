@@ -27,6 +27,9 @@ class EmotionSummaryViewController: UIViewController {
     }
     
     func displayTopEmotions() {
+        
+        let startTime = CFAbsoluteTimeGetCurrent()
+        
         let dates = weekDates()
         
         let thisWeekEmotions = fetchEmotionCounts(from: dates.thisWeek.from, to: dates.thisWeek.to)
@@ -41,9 +44,16 @@ class EmotionSummaryViewController: UIViewController {
         // クラスのラベルを表示するためのコード
         thisWeekEmotionLabel.text = thisWeekTopEmotion
         lastWeekEmotionLabel.text = lastWeekTopEmotion
+        
+        let endTime = CFAbsoluteTimeGetCurrent()  // 処理終了時刻
+        let elapsedTime = endTime - startTime
+        print("Elapsed time for displaying top emotions: \(elapsedTime) seconds")
     }
     
     func setupBarChart() {
+        
+        let startTime = CFAbsoluteTimeGetCurrent()  // 処理開始時刻
+        
         let dates = last30Days()  // 修正された関数を使用
         let emotions = fetchEmotionCounts(from: dates.from, to: dates.to)
         var dataEntries: [BarChartDataEntry] = []
@@ -84,6 +94,10 @@ class EmotionSummaryViewController: UIViewController {
         emotionChartView.leftAxis.drawGridLinesEnabled = false
         
         emotionChartView.notifyDataSetChanged()
+        
+        let endTime = CFAbsoluteTimeGetCurrent()  // 処理終了時刻
+        let elapsedTime = endTime - startTime
+        print("Elapsed time for setting up chart: \(elapsedTime) seconds")
     }
 
 
@@ -122,6 +136,7 @@ class EmotionSummaryViewController: UIViewController {
     }
     
     func fetchEmotionCounts(from startDate: Date, to endDate: Date) -> [String: Int] {
+        let startTime = CFAbsoluteTimeGetCurrent()  // 処理開始時刻
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<Journal>(entityName: "Journal")
@@ -139,7 +154,11 @@ class EmotionSummaryViewController: UIViewController {
         } catch {
             print("Error fetching journals: \(error)")
         }
-        print("\(emotionCounts)")
+        
+        let endTime = CFAbsoluteTimeGetCurrent()  // 処理終了時刻
+        let elapsedTime = endTime - startTime
+        print("Elapsed time for fetching data: \(elapsedTime) seconds")
+        
         return emotionCounts
     }
     
