@@ -68,7 +68,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Journal List" id="IcQ-74-awb">
-                        <barButtonItem key="leftBarButtonItem" title="ログアウト" id="ja6-g5-s5b">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="ja6-g5-s5b">
                             <connections>
                                 <action selector="logOutPressed:" destination="9oU-0T-LJy" id="3AT-Gc-Be1"/>
                             </connections>
@@ -202,10 +202,10 @@ This Week</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGN-8P-czK">
-                                <rect key="frame" x="140" y="775" width="111" height="35"/>
+                                <rect key="frame" x="154" y="775" width="84" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="分析を見る"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Analyse"/>
                                 <connections>
                                     <action selector="analyzeButtonPressed:" destination="84M-9Z-REI" eventType="touchUpInside" id="WfH-ct-YcR"/>
                                 </connections>
@@ -329,12 +329,12 @@ This Week</string>
                                 <rect key="frame" x="147" y="720" width="97" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="本人認証"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Verify"/>
                                 <connections>
                                     <action selector="authenticateButtonTapped:" destination="IqY-pW-478" eventType="touchUpInside" id="2uk-Qe-n0o"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="下のボタンを押して、本人認証を行なってください。" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiL-sl-PQD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please press the button below to proceed with self-verification." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiL-sl-PQD">
                                 <rect key="frame" x="62" y="366" width="267" height="113"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
