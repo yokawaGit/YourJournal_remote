@@ -44,8 +44,8 @@ class EmotionSummaryViewController: UIViewController {
     }
     
     func setupBarChart() {
-        let dates = monthDates()
-        let emotions = fetchEmotionCounts(from: dates.from, to: dates.to)
+        let dates = last30Days()  // 修正された関数を使用
+            let emotions = fetchEmotionCounts(from: dates.from, to: dates.to)
         var dataEntries: [BarChartDataEntry] = []
         var emotionNames: [String] = []
         
@@ -93,14 +93,23 @@ class EmotionSummaryViewController: UIViewController {
         return (thisWeek: (startOfThisWeek, endOfThisWeek), lastWeek: (startOfLastWeek, endOfLastWeek))
     }
     
-    func monthDates() -> (from: Date, to: Date) {
+//    func monthDates() -> (from: Date, to: Date) {
+//        let calendar = Calendar.current
+//        let now = Date()
+//
+//        let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: now))!
+//        let endOfMonth = calendar.date(byAdding: .month, value: 1, to: startOfMonth)!
+//
+//        return (from: startOfMonth, to: endOfMonth)
+//    }
+    
+    func last30Days() -> (from: Date, to: Date) {
         let calendar = Calendar.current
         let now = Date()
         
-        let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: now))!
-        let endOfMonth = calendar.date(byAdding: .month, value: 1, to: startOfMonth)!
+        let thirtyDaysAgo = calendar.date(byAdding: .day, value: -30, to: now)!
         
-        return (from: startOfMonth, to: endOfMonth)
+        return (from: thirtyDaysAgo, to: now)
     }
     
     func fetchEmotionCounts(from startDate: Date, to endDate: Date) -> [String: Int] {
@@ -121,7 +130,7 @@ class EmotionSummaryViewController: UIViewController {
         } catch {
             print("Error fetching journals: \(error)")
         }
-        
+        print("\(emotionCounts)")
         return emotionCounts
     }
     
