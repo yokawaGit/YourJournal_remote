@@ -77,7 +77,7 @@ class EmotionSummaryViewController: UIViewController {
         
         // Y軸のラベルを表示
 //        emotionChartView.leftAxis.axisMaximum = 100.0
-//        emotionChartView.rightAxis.enabled = false
+        emotionChartView.rightAxis.enabled = false
         
         // グリッドラインを非表示にする
         emotionChartView.xAxis.drawGridLinesEnabled = false
