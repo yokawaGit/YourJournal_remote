@@ -45,28 +45,33 @@ class JouranlDetailVC: UIViewController {
     
     @IBAction func analyzeButtonPressed(_ sender: Any) {
         
-        // ここでキーボードを引っ込める
-           descTV.resignFirstResponder()
-           
-           guard let inputText = descTV.text, !inputText.isEmpty else {
-               resultLabel.text = "❓"
-               return
-           }
-           
-           // テキストをモデルに入力して予測を取得
-           let input = EnglishEmotionDetectionModelInput(text: inputText)
-           
-           guard let output = try? model.prediction(input: input) else {
-               resultLabel.text = "Analysis failed."
-               return
-           }
-           
-           // 予測結果をラベルに表示
-           let emotion = "\(output.label)"
-           selectedJournal?.emotionResult = emotion // 結果を保存
-           let emoji = emotionToEmoji(emotion: emotion)
-           resultLabel.text = "\(emotion) \(emoji)" // ラベルと顔文字を一緒に表示
+        let startTime = CFAbsoluteTimeGetCurrent()
         
+        // ここでキーボードを引っ込める
+        descTV.resignFirstResponder()
+        
+        guard let inputText = descTV.text, !inputText.isEmpty else {
+            resultLabel.text = "❓"
+            return
+        }
+        
+        // テキストをモデルに入力して予測を取得
+        let input = EnglishEmotionDetectionModelInput(text: inputText)
+        
+        guard let output = try? model.prediction(input: input) else {
+            resultLabel.text = "Analysis failed."
+            return
+        }
+        
+        // 予測結果をラベルに表示
+        let emotion = "\(output.label)"
+        selectedJournal?.emotionResult = emotion // 結果を保存
+        let emoji = emotionToEmoji(emotion: emotion)
+        resultLabel.text = "\(emotion) \(emoji)" // ラベルと顔文字を一緒に表示
+        
+        let endTime = CFAbsoluteTimeGetCurrent()
+        let elapsedTime = endTime - startTime
+        print("Elapsed time for emotion analysis: \(elapsedTime) seconds")
     }
     
     
@@ -88,9 +93,11 @@ class JouranlDetailVC: UIViewController {
             return "❓"
         }
     }
-
+    
     
     @IBAction func saveAction(_ sender: Any) {
+        
+        let startTime = CFAbsoluteTimeGetCurrent()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
@@ -126,9 +133,15 @@ class JouranlDetailVC: UIViewController {
                 print("Fetch failed.")
             }
         }
+        
+        let endTime = CFAbsoluteTimeGetCurrent()
+        let elapsedTime = endTime - startTime
+        print("Elapsed time for data saving: \(elapsedTime) seconds")
     }
     
     @IBAction func deletePressed(_ sender: UIBarButtonItem) {
+        
+        let startTime = CFAbsoluteTimeGetCurrent()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
@@ -148,6 +161,10 @@ class JouranlDetailVC: UIViewController {
         } catch {
             print("Fetch failed.")
         }
+        
+        let endTime = CFAbsoluteTimeGetCurrent()
+        let elapsedTime = endTime - startTime
+        print("Elapsed time for data deletion: \(elapsedTime) seconds")
     }
     
 }
