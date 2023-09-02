@@ -30,21 +30,21 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
         
         var noDeleteJournalList = [Journal]()
         
-//        for journal in journalList {
-//            if(journal.dateDeleted == nil) {
-//                noDeleteJournalList.append(journal)
-//            }
-//        }
+        //        for journal in journalList {
+        //            if(journal.dateDeleted == nil) {
+        //                noDeleteJournalList.append(journal)
+        //            }
+        //        }
         
-//        for journal in journalList {
-//                    if let searchDate = searchDate {
-//                        if journal.dateDeleted == nil && journal.dayCreated == searchDate {
-//                            noDeleteJournalList.append(journal)
-//                        }
-//                    } else if journal.dateDeleted == nil {
-//                        noDeleteJournalList.append(journal)
-//                    }
-//                }
+        //        for journal in journalList {
+        //                    if let searchDate = searchDate {
+        //                        if journal.dateDeleted == nil && journal.dayCreated == searchDate {
+        //                            noDeleteJournalList.append(journal)
+        //                        }
+        //                    } else if journal.dateDeleted == nil {
+        //                        noDeleteJournalList.append(journal)
+        //                    }
+        //                }
         
         for journal in journalList {
             if let searchDate = searchDate, let journalDate = journal.dayCreated {
@@ -61,15 +61,15 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
                 noDeleteJournalList.append(journal)
             }
         }
-
+        
         
         // dayCreatedに基づいてソート
-            noDeleteJournalList.sort { (journal1, journal2) -> Bool in
-                guard let date1 = journal1.dayCreated, let date2 = journal2.dayCreated else {
-                    return false
-                }
-                return date1 > date2 // 新しいものから古いものへの降順でソート
+        noDeleteJournalList.sort { (journal1, journal2) -> Bool in
+            guard let date1 = journal1.dayCreated, let date2 = journal2.dayCreated else {
+                return false
             }
+            return date1 > date2 // 新しいものから古いものへの降順でソート
+        }
         
         return noDeleteJournalList
     }
@@ -79,7 +79,7 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
-
+        
         searchBar.delegate = self
         
         if(firstLoad){
@@ -92,7 +92,7 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
             do {
                 let results: NSArray = try context.fetch(request) as NSArray
                 for result in results {
-                     let journal = result as! Journal
+                    let journal = result as! Journal
                     journalList.append(journal)
                 }
             } catch  {
@@ -102,18 +102,49 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            // 日付の文字列をDate型に変換
-            if let dateString = searchBar.text {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd"
-                if let date = formatter.date(from: dateString) {
-                    searchDate = date
-                }
+        // 日付の文字列をDate型に変換
+        if let dateString = searchBar.text {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            if let date = formatter.date(from: dateString) {
+                searchDate = date
             }
-            
-            tableView.reloadData() // テーブルビューを更新して結果を表示
-            searchBar.resignFirstResponder() // キーボードを閉じる
         }
+        // テーブルビューを更新して結果を表示
+        tableView.reloadData()
+        // キーボードを閉じる
+        searchBar.resignFirstResponder()
+        // キャンセルボタンを表示
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        // キャンセルボタンを非表示にする
+        searchBar.showsCancelButton = false
+        
+        // キーボードを閉じる
+        searchBar.resignFirstResponder()
+        
+        // 検索バーのテキストをクリア
+        searchBar.text = ""
+        
+        // 検索条件をクリア（オプショナル）
+        searchDate = nil
+        
+        // テーブルビューを元の状態に更新
+        tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        // テキスト編集が始まったときにキャンセルボタンを表示
+        searchBar.showsCancelButton = true
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        // テキスト編集が終わったときにキャンセルボタンを非表示
+        searchBar.showsCancelButton = false
+    }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -131,7 +162,7 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
         } else {
             journalCell.dateLabel.text = "Unknown Date"
         }
-
+        
         // emotionResultを顔文字に変換してセルに表示
         if let emotion = thisJournal.emotionResult {
             let emoji = emotionToEmoji(emotion: emotion)
@@ -174,7 +205,7 @@ class JournalTableView: UITableViewController, UISearchBarDelegate {
         navigationController?.popToRootViewController(animated: true)
         
     }
-
+    
     @IBAction func analysisPressed(_ sender: UIBarButtonItem) {
         
         performSegue(withIdentifier: "ToAnalysis", sender: self)
